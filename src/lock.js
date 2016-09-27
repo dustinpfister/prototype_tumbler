@@ -42,6 +42,8 @@ var Lock = (function () {
         tumblers : [],
         activeTumb : 0,
 
+        fail : false, // the player failed
+
         cx : 160,
         cy : 120,
         minR : 25,
@@ -53,9 +55,9 @@ var Lock = (function () {
 
         this.tumblers = [];
 
-        this.tumblers.push(new Tumbler(40, 90, 0));
-        this.tumblers.push(new Tumbler(80, 90, 0));
-        this.tumblers.push(new Tumbler(120, 90, 0));
+        this.tumblers.push(new Tumbler(40, 20, 0));
+        this.tumblers.push(new Tumbler(80, 40, 0));
+        this.tumblers.push(new Tumbler(120, 60, 0));
 
     };
 

@@ -44,12 +44,23 @@ var Render = (function () {
             rDelta = Math.PI * 2 / tumb.maxClicks;
 
             r = rDelta * tumb.click;
-
             x = Math.cos(r) * (p.minR + spacing * i + spacing) + p.cx;
             y = Math.sin(r) * (p.minR + spacing * i + spacing) + p.cy;
 
             // draw current click
             ctx.fillStyle = '#ff0000';
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+
+            r = rDelta * tumb.pinClick;
+            x = Math.cos(r) * (p.minR + spacing * i + spacing) + p.cx;
+            y = Math.sin(r) * (p.minR + spacing * i + spacing) + p.cy;
+
+            // draw the pin location
+            ctx.fillStyle = '#ffff00';
             ctx.beginPath();
             ctx.arc(x, y, 5, 0, Math.PI * 2);
             ctx.closePath();
