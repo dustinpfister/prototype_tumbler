@@ -38,9 +38,9 @@ var Lock = (function () {
 
     var Plug = {
 
-
         // the collection of Tumblers in the current lock plug
         tumblers : [],
+        activeTumb : 0,
 
         cx : 160,
         cy : 120,
@@ -67,15 +67,15 @@ var Lock = (function () {
 
             setupPlug.call(Plug);
 
+            Plug.activeTumb = Plug.tumblers.length - 1;
+
         },
 
         tick : function () {
 
-            Plug.tumblers.forEach(function (tumb) {
+            var tumb = Plug.tumblers[Plug.activeTumb];
 
-                tumb.tick();
-
-            });
+            tumb.tick();
 
         }
 
