@@ -36,7 +36,6 @@ var Render = (function () {
         rDelta,
         tumb,
         spacing = (p.maxR - p.minR) / (len);
-
         while (i < len) {
 
             tumb = p.tumblers[i];
@@ -95,6 +94,9 @@ var Render = (function () {
 
             drawPlug();
             drawTumblers();
+
+            ctx.fillStyle = '#00ffff';
+            ctx.fillText('d=' + Lock.Plug.d, 20, 20);
 
         }
 

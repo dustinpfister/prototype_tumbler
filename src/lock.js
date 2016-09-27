@@ -1,5 +1,15 @@
 var Lock = (function () {
 
+    // half distance function
+    var halfDistance = function (total, pos1, pos2) {
+
+        var d1 = Math.abs(pos1 - pos2),
+        d2 = total - d1;
+
+        return d1 < d2 ? d1 : d2;
+
+    };
+
     // a single lock "Tumbler"
     var Tumbler = function (maxClicks, pinClick, start) {
 
@@ -42,8 +52,10 @@ var Lock = (function () {
         tumblers : [],
         activeTumb : 0,
 
+        canFail : false, // the player can fail
         fail : false, // the player failed
 
+        d : 0, // distance of current click from tumbler
         cx : 160,
         cy : 120,
         minR : 25,
@@ -55,9 +67,9 @@ var Lock = (function () {
 
         this.tumblers = [];
 
-        this.tumblers.push(new Tumbler(40, 20, 0));
-        this.tumblers.push(new Tumbler(80, 40, 0));
-        this.tumblers.push(new Tumbler(120, 60, 0));
+        this.tumblers.push(new Tumbler(10, 5, 0));
+        this.tumblers.push(new Tumbler(20, 10, 0));
+        this.tumblers.push(new Tumbler(30, 15, 0));
 
     };
 
@@ -78,6 +90,9 @@ var Lock = (function () {
             var tumb = Plug.tumblers[Plug.activeTumb];
 
             tumb.tick();
+
+            // distnace to the pin.
+            Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
 
         }
 
