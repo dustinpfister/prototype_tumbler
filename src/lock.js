@@ -57,6 +57,8 @@ var Lock = (function () {
         touch : false,
         win : false,
 
+        level : 1,
+
         d : 0, // distance of current click from tumbler
         tolerance : 4,
         cx : 160,
@@ -124,7 +126,9 @@ var Lock = (function () {
             // the game is over because of fail or win
             if (Plug.fail || Plug.win) {
 
-                console.log('okay now what?')
+                console.log('reset to level: ' + Plug.level);
+
+                this.setLevel(Plug.level);
 
                 // game is still live
             } else {
