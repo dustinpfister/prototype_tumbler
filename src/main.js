@@ -5,7 +5,7 @@ var Main = (function () {
     var current = 'start',
     firstRun = true,
     lastTick = new Date(0),
-    tickRate = 500,
+    tickRate = 33,
     changeState = function (state) {
 
         current = state;

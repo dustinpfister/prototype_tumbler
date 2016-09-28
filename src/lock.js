@@ -54,9 +54,10 @@ var Lock = (function () {
 
         canFail : false, // the player can fail
         fail : false, // the player failed
+        touch : false,
 
         d : 0, // distance of current click from tumbler
-        tolerance : 2,
+        tolerance : 4,
         cx : 160,
         cy : 120,
         minR : 25,
@@ -70,7 +71,7 @@ var Lock = (function () {
 
         this.tumblers.push(new Tumbler(10, 5, 0));
         this.tumblers.push(new Tumbler(20, 10, 0));
-        this.tumblers.push(new Tumbler(30, 15, 0));
+        this.tumblers.push(new Tumbler(80, 15, 0));
 
     };
 
@@ -99,9 +100,25 @@ var Lock = (function () {
             // distnace to the pin.
             Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
 
+            // can win if touch, else may fail
             if (Plug.d < Plug.tolerance) {
 
                 Plug.canFail = true;
+
+                if (Plug.touch) {
+
+                    if (Plug.activeTumb > 0) {
+
+					console.log('hello??');
+					
+                        Plug.activeTumb -= 1;
+
+                        Plug.touch = false;
+                        Plug.canFail = false;
+
+                    }
+
+                }
 
             } else {
 
@@ -111,7 +128,21 @@ var Lock = (function () {
 
                 }
 
+                if (Plug.touch) {
+
+                    Plug.fail = true;
+
+                }
+
             }
+
+        },
+
+        onTouch : function () {
+
+            console.log('current d = ' + Plug.d);
+
+            Plug.touch = true;
 
         }
 

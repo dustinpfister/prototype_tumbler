@@ -83,6 +83,12 @@ var Render = (function () {
             canvas.width = 320;
             canvas.height = 240;
 
+            canvas.addEventListener('mousedown', function (e) {
+
+                Lock.onTouch();
+
+            });
+
             container.appendChild(canvas);
 
         },
