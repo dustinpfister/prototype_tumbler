@@ -121,25 +121,35 @@ var Lock = (function () {
 
             var tumb = Plug.tumblers[Plug.activeTumb];
 
-            // can win if touch, else may fail
-            if (Plug.d < Plug.tolerance) {
+            // the game is over because of fail or win
+            if (Plug.fail || Plug.win) {
 
-                if (Plug.activeTumb > 0) {
+                console.log('okay now what?')
 
-                    Plug.activeTumb -= 1;
-
-                    Plug.canFail = false;
-
-                    // assuming player reached tumbler 0
-                } else {
-
-                    Plug.win = true;
-
-                }
-
+                // game is still live
             } else {
 
-                Plug.fail = true;
+                // can win if touch, else may fail
+                if (Plug.d < Plug.tolerance) {
+
+                    if (Plug.activeTumb > 0) {
+
+                        Plug.activeTumb -= 1;
+
+                        Plug.canFail = false;
+
+                        // assuming player reached tumbler 0
+                    } else {
+
+                        Plug.win = true;
+
+                    }
+
+                } else {
+
+                    Plug.fail = true;
+
+                }
 
             }
 
