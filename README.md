@@ -5,3 +5,7 @@ This is a prototype for a game based off the game "Pop The Lock" that was a litt
 ## Hosting
 
   * Hosting 1.0.16 at my [github page](https://dustinpfister.github.io/apps/prototype_tumbler/)
+  
+## Legal
+
+Copyright 2016 By Dustin Pfister (GPL v3)
