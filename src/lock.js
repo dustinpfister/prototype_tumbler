@@ -123,13 +123,10 @@ var Lock = (function () {
             // can win if touch, else may fail
             if (Plug.d < Plug.tolerance) {
 
-                Plug.canFail = true;
-
                 if (Plug.activeTumb > 0) {
 
                     Plug.activeTumb -= 1;
 
-                    Plug.touch = false;
                     Plug.canFail = false;
 
                 }
