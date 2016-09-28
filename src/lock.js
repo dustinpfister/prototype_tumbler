@@ -69,9 +69,9 @@ var Lock = (function () {
 
         this.tumblers = [];
 
-        this.tumblers.push(new Tumbler(20, 4, 0, true));
-        this.tumblers.push(new Tumbler(40, 30, 0, false));
-        this.tumblers.push(new Tumbler(80, 40, 0, true));
+        this.tumblers.push(new Tumbler(40, 20, 4, true));
+        this.tumblers.push(new Tumbler(80, 30, 70, false));
+        this.tumblers.push(new Tumbler(120, 40, 0, true));
 
     };
 
@@ -97,6 +97,10 @@ var Lock = (function () {
 
             }
 
+        },
+
+        onTouch : function () {
+
             // distnace to the pin.
             Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
 
@@ -109,8 +113,6 @@ var Lock = (function () {
 
                     if (Plug.activeTumb > 0) {
 
-					console.log('hello??');
-					
                         Plug.activeTumb -= 1;
 
                         Plug.touch = false;
@@ -135,10 +137,6 @@ var Lock = (function () {
                 }
 
             }
-
-        },
-
-        onTouch : function () {
 
             console.log('current d = ' + Plug.d);
 
