@@ -95,7 +95,7 @@ var Lock = (function () {
             // distnace to the pin.
             Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
 
-            if (!Plug.fail) {
+            if (!Plug.fail && !Plug.win) {
 
                 tumb.tick();
 
@@ -129,6 +129,11 @@ var Lock = (function () {
                     Plug.activeTumb -= 1;
 
                     Plug.canFail = false;
+
+                    // assuming player reached tumbler 0
+                } else {
+
+                    Plug.win = true;
 
                 }
 
