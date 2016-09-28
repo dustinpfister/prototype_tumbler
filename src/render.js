@@ -1,4 +1,10 @@
-
+/*
+ *    render.js for prototype_tumbler
+ *    Copyright 2016 by Dustin Pfister (GPL v3)
+ *
+ *    simple canvas render.
+ *
+ */
 var Render = (function () {
 
     var container,
