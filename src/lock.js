@@ -55,6 +55,7 @@ var Lock = (function () {
         canFail : false, // the player can fail
         fail : false, // the player failed
         touch : false,
+        win : false,
 
         d : 0, // distance of current click from tumbler
         tolerance : 4,

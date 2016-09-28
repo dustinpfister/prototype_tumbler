@@ -103,6 +103,12 @@ var Render = (function () {
 
             }
 
+            if (Lock.Plug.win) {
+
+                ctx.fillStyle = '#00af00';
+
+            }
+
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             drawPlug();
