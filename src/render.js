@@ -96,6 +96,13 @@ var Render = (function () {
         draw : function (state) {
 
             ctx.fillStyle = '#000000';
+
+            if (Lock.Plug.fail) {
+
+                ctx.fillStyle = '#af0000';
+
+            }
+
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             drawPlug();
