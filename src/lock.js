@@ -91,36 +91,18 @@ var Lock = (function () {
 
             var tumb = Plug.tumblers[Plug.activeTumb];
 
+            // distnace to the pin.
+            Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
+
             if (!Plug.fail) {
 
                 tumb.tick();
 
             }
 
-        },
-
-        onTouch : function () {
-
-            // distnace to the pin.
-            Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
-
-            // can win if touch, else may fail
             if (Plug.d < Plug.tolerance) {
 
                 Plug.canFail = true;
-
-                if (Plug.touch) {
-
-                    if (Plug.activeTumb > 0) {
-
-                        Plug.activeTumb -= 1;
-
-                        Plug.touch = false;
-                        Plug.canFail = false;
-
-                    }
-
-                }
 
             } else {
 
@@ -130,17 +112,35 @@ var Lock = (function () {
 
                 }
 
-                if (Plug.touch) {
+            }
 
-                    Plug.fail = true;
+        },
+
+        onTouch : function () {
+
+            var tumb = Plug.tumblers[Plug.activeTumb];
+
+            // can win if touch, else may fail
+            if (Plug.d < Plug.tolerance) {
+
+                Plug.canFail = true;
+
+                if (Plug.activeTumb > 0) {
+
+                    Plug.activeTumb -= 1;
+
+                    Plug.touch = false;
+                    Plug.canFail = false;
 
                 }
+
+            } else {
+
+                Plug.fail = true;
 
             }
 
             console.log('current d = ' + Plug.d);
-
-            Plug.touch = true;
 
         }
 
