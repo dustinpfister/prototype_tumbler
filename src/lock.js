@@ -11,12 +11,12 @@ var Lock = (function () {
     };
 
     // a single lock "Tumbler"
-    var Tumbler = function (maxClicks, pinClick, start) {
+    var Tumbler = function (maxClicks, pinClick, start, clockwise) {
 
         this.click = start;
         this.pinClick = pinClick;
         this.maxClicks = maxClicks;
-        this.clockwise = false;
+        this.clockwise = clockwise;
 
     };
 
@@ -69,9 +69,9 @@ var Lock = (function () {
 
         this.tumblers = [];
 
-        this.tumblers.push(new Tumbler(10, 5, 0));
-        this.tumblers.push(new Tumbler(20, 10, 0));
-        this.tumblers.push(new Tumbler(80, 15, 0));
+        this.tumblers.push(new Tumbler(20, 4, 0, true));
+        this.tumblers.push(new Tumbler(40, 30, 0, false));
+        this.tumblers.push(new Tumbler(80, 40, 0, true));
 
     };
 
