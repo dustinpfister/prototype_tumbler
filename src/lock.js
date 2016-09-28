@@ -56,6 +56,7 @@ var Lock = (function () {
         fail : false, // the player failed
 
         d : 0, // distance of current click from tumbler
+        tolerance : 2,
         cx : 160,
         cy : 120,
         minR : 25,
@@ -89,10 +90,28 @@ var Lock = (function () {
 
             var tumb = Plug.tumblers[Plug.activeTumb];
 
-            tumb.tick();
+            if (!Plug.fail) {
+
+                tumb.tick();
+
+            }
 
             // distnace to the pin.
             Plug.d = halfDistance(tumb.maxClicks, tumb.click, tumb.pinClick);
+
+            if (Plug.d < Plug.tolerance) {
+
+                Plug.canFail = true;
+
+            } else {
+
+                if (Plug.canFail) {
+
+                    Plug.fail = true;
+
+                }
+
+            }
 
         }
 

@@ -89,14 +89,17 @@ var Render = (function () {
 
         draw : function (state) {
 
-            ctx.fillStyle = '#8a8a8a';
+            ctx.fillStyle = '#000000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             drawPlug();
             drawTumblers();
 
             ctx.fillStyle = '#00ffff';
+            ctx.font = '10px arial';
+            ctx.textBaseline = 'top';
             ctx.fillText('d=' + Lock.Plug.d, 20, 20);
+            ctx.fillText('tolerance=' + Lock.Plug.tolerance, 20, 40);
 
         }
 
