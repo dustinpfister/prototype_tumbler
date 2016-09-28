@@ -88,6 +88,10 @@ var Lock = (function () {
 
             Plug.activeTumb = Plug.tumblers.length - 1;
 
+            Plug.canFail = false;
+            Plug.fail = false;
+            Plug.win = false;
+
         },
 
         tick : function () {
